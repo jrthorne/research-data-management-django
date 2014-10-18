@@ -1,5 +1,5 @@
 from django.db import models
-
+############################################
 # Create your models here.
 class Server(models.Model):
     name            = models.CharField(max_length=255)
@@ -17,6 +17,7 @@ class Server(models.Model):
     status.boolean = True
 # end Server
 
+############################################
 class Check(models.Model):
     server          = models.ForeignKey('Server')
     name            = models.CharField(max_length=255, blank=True)
@@ -29,4 +30,16 @@ class Check(models.Model):
     # end unicode
 # end check
     
+############################################
+class RDSlog(models.Model):
+    run_date        = models.DateTimeField()
+    plan            = models.CharField(max_length=255)
+    cache           = models.CharField(max_length=255)
+    space           = models.PositiveIntegerField(help_text="units are bytes")
+    number_of_files = models.PositiveIntegerField()
+    import_file_name    = models.CharField(max_length=255)
+    import_file_stamp   = models.DateTimeField(blank=True, null=True)
     
+    def __unicode__(self):
+        return self.run_date.strftime("%d %h %Y") + ":" + self.plan
+        
