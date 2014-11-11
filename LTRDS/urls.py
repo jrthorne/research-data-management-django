@@ -10,5 +10,7 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^import/', importRDSlog, name='importRDSlog'),
+    url(r'^importrds/', importRDSlog, name='importRDSlog'),
+    #url(r'^importrdmpinfo/', importRDMPinfo, name='importRDMPinfo'),
+    
 )

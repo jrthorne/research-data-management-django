@@ -6,11 +6,16 @@ class ServerAdmin(admin.ModelAdmin):
 # end ServerAdmin
 
 class RDSlogAdmin(admin.ModelAdmin):
-    list_display = ['run_date', 'plan', 'import_file_name']
+    list_display = ['id', 'run_date', 'plan', 'space', 'import_file_name']
     list_filter = ['plan']
     list_per_page = 20
 
+class Rdmp_infoAdmin(admin.ModelAdmin):
+    list_display = ['id', 'rdmp_id', 'estimated_volume', 'storage_namespace']
+    list_per_page = 20
+    
 # Register your models here.
 admin.site.register(Server, ServerAdmin)
 admin.site.register(Check)
 admin.site.register(RDSlog, RDSlogAdmin)
+admin.site.register(Rdmp_info, Rdmp_infoAdmin)

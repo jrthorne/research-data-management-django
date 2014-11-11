@@ -42,4 +42,22 @@ class RDSlog(models.Model):
     
     def __unicode__(self):
         return self.run_date.strftime("%d %h %Y") + ":" + self.plan
-        
+
+############################################        
+class Rdmp_info(models.Model):
+    rdmp_id             = models.CharField(max_length=255)
+    dc_status           = models.BooleanField()
+    dc_storage_status   = models.CharField(max_length=255, blank=True)
+    estimated_volume    = models.CharField(max_length=255, blank=True)
+    storage_namespace   = models.CharField(max_length=255, blank=True)
+    ms21_storage_status = models.CharField(max_length=255, blank=True)
+    ms21_status         = models.CharField(max_length=255, blank=True)
+    data_storage_required = models.NullBooleanField(blank=True)
+    affiliation         = models.CharField(max_length=255)
+    school              = models.CharField(max_length=255)
+    has_award           = models.BooleanField()
+    
+    def __unicode__(self):
+        return self.rdmp_id
+    
+    
