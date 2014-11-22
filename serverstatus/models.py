@@ -35,7 +35,7 @@ class Rds_log(models.Model):
     run_date        = models.DateTimeField()
     plan            = models.CharField(max_length=255)
     cache           = models.CharField(max_length=255)
-    space           = models.CharField(max_length=255, help_text="units are bytes")
+    space           = models.FloatField(null=True, blank=True, help_text="units are Gigabytes")
     number_of_files = models.PositiveIntegerField()
     import_file_name    = models.CharField(max_length=255)
     import_file_stamp   = models.DateTimeField(blank=True, null=True)
@@ -48,7 +48,7 @@ class Rdmp_info(models.Model):
     rdmp_id             = models.CharField(max_length=255)
     dc_status           = models.BooleanField()
     dc_storage_status   = models.CharField(max_length=255, blank=True)
-    estimated_volume    = models.CharField(max_length=255, blank=True)
+    estimated_volume    = models.FloatField(null=True, blank=True, help_text="units are Gigabytes")
     storage_namespace   = models.CharField(max_length=255, blank=True)
     ms21_storage_status = models.CharField(max_length=255, blank=True)
     ms21_status         = models.CharField(max_length=255, blank=True)
@@ -62,7 +62,7 @@ class Rdmp_info(models.Model):
     
 ############################################
 class User_access(models.Model):
-    zid                 = models.CharField(max_length=10)
+    zid                 = models.CharField(max_length=10, unique=True)
     first_access        = models.DateTimeField()
     last_access         = models.DateTimeField()
     
