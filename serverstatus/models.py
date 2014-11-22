@@ -31,11 +31,11 @@ class Check(models.Model):
 # end check
     
 ############################################
-class RDSlog(models.Model):
+class Rds_log(models.Model):
     run_date        = models.DateTimeField()
     plan            = models.CharField(max_length=255)
     cache           = models.CharField(max_length=255)
-    space           = models.PositiveIntegerField(help_text="units are bytes")
+    space           = models.CharField(max_length=255, help_text="units are bytes")
     number_of_files = models.PositiveIntegerField()
     import_file_name    = models.CharField(max_length=255)
     import_file_stamp   = models.DateTimeField(blank=True, null=True)
@@ -60,4 +60,14 @@ class Rdmp_info(models.Model):
     def __unicode__(self):
         return self.rdmp_id
     
+############################################
+class User_access(models.Model):
+    zid                 = models.CharField(max_length=10)
+    first_access        = models.DateTimeField()
+    last_access         = models.DateTimeField()
+    
+    def __unicode__(self):
+        return 'z' + str(self.zid)
+    # end unicode
+# end user_access
     
