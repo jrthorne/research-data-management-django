@@ -13,7 +13,8 @@ class rds_logAdmin(admin.ModelAdmin):
 
 ############################################
 class rds_statAdmin(admin.ModelAdmin):
-    list_display    = ['run_date', 'total_space', 'number_of_files', 'number_of_plans']
+    list_display    = ['run_date', 'total_space', 'space_lag', \
+                    'number_of_files', 'files_lag', 'number_of_plans', 'plans_lag']
     list_filter     = ['run_date']
     list_per_page   = 20
 

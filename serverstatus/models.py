@@ -46,9 +46,12 @@ class Rds_log(models.Model):
 ############################################  
 class Rds_stat(models.Model):
     run_date        = models.DateField(unique=True)
-    total_space     = models.FloatField("units are Gigabytes")
+    total_space     = models.FloatField("Space Terabytes")
+    space_lag       = models.FloatField("Difference Gigabytes")
     number_of_files = models.PositiveIntegerField()
+    files_lag       = models.PositiveIntegerField(help_text="Difference From Yesterday")
     number_of_plans = models.PositiveIntegerField()
+    plans_lag       = models.PositiveIntegerField(help_text="Difference From Yesterday")
     
     def __unicode(self):
         return self.run_date.strftime("%d %h %Y")
