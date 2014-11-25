@@ -12,6 +12,12 @@ class rds_logAdmin(admin.ModelAdmin):
     list_per_page   = 20
 
 ############################################
+class rds_statAdmin(admin.ModelAdmin):
+    list_display    = ['run_date', 'total_space', 'number_of_files', 'number_of_plans']
+    list_filter     = ['run_date']
+    list_per_page   = 20
+
+############################################
 class rdmp_infoAdmin(admin.ModelAdmin):
     list_display    = ['rdmp_id', 'estimated_volume', 'storage_namespace']
     list_per_page   = 20
@@ -29,3 +35,4 @@ admin.site.register(Check)
 admin.site.register(Rds_log, rds_logAdmin)
 admin.site.register(Rdmp_info, rdmp_infoAdmin)
 admin.site.register(User_access, user_access_admin)
+admin.site.register(Rds_stat, rds_statAdmin)

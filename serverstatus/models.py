@@ -43,6 +43,17 @@ class Rds_log(models.Model):
     def __unicode__(self):
         return self.run_date.strftime("%d %h %Y") + ":" + self.plan
 
+############################################  
+class Rds_stat(models.Model):
+    run_date        = models.DateField(unique=True)
+    total_space     = models.FloatField("units are Gigabytes")
+    number_of_files = models.PositiveIntegerField()
+    number_of_plans = models.PositiveIntegerField()
+    
+    def __unicode(self):
+        return self.run_date.strftime("%d %h %Y")
+# end Rds_log_stat
+
 ############################################        
 class Rdmp_info(models.Model):
     rdmp_id             = models.CharField(max_length=255)
